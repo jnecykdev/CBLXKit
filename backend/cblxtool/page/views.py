@@ -22,6 +22,9 @@ from django.db.models import Max, Q
 from django.db import transaction
 from phase.services import normalize_phase
 from project.models import Project
+from django.utils.timezone import now
+from drf_spectacular.utils import extend_schema
+from rest_framework.decorators import action
 
 service = PageService(dao=CBLPageDAO())
 
@@ -273,3 +276,45 @@ def upload_page_file(request, page_id: int):
         "fileName": f.name,
         "filePath": abs_url
     }, status=201)
+
+@extend_schema(
+        description="Exports a single page and its related content as structured JSON.",
+        responses={200: dict},
+    )
+
+@action(detail=True, methods=["get"], url_path="export")
+def export(self, request, pk=None):
+    page = self.get_object()
+
+    # Project and Phase may be nullable depending on legacy data,
+    # so be defensive here.
+    phase = getattr(page, "phase", None)
+    project = getattr(page, "project", None)
+
+    data = {
+        "page": {
+            "id": page.id,
+            "title": page.title,
+            "order": page.order,
+            "phase": {
+                "id": phase.id,
+                "name": phase.name,
+                "index": phase.index,
+            } if phase else None,
+            "project": {
+                "id": project.id,
+                "name": project.name,
+            } if project else None,
+            "content": {
+                "dynamic_data": page.dynamic_data,
+                "blocks": page.blocks,
+                "html": page.html,
+            },
+            "meta": {
+                "exported_at": now().isoformat(),
+                "schema_version": "1.0",
+            },
+        }
+    }
+
+    return Response(data)
