@@ -4,6 +4,7 @@ from django.db import models
 class Phase(models.Model):
     PHASE_CHOICES = [
         ('Engage', 'Engage'),
+        ('EssentialQuestioning', 'EssentialQuestioning'),
         ('Investigate', 'Investigate'),
         ('Act', 'Act'),
     ]
