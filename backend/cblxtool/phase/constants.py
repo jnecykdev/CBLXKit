@@ -4,30 +4,37 @@ PHASE_ALIASES = {
     "engage": "Engage",
     "investigate": "Investigate",
     "act": "Act",
+    "essentialquestioning": "EssentialQuestioning",
     "Engage": "Engage",
     "Investigate": "Investigate",
     "Act": "Act",
+    "EssentialQuestioning": "EssentialQuestioning",
 }
 
 VALID_PHASES = set(PHASE_ALIASES.values())
 
 STEP_MAP = {
-    "Engage": ["big_idea", "essential_question", "challenge"],
+    "Engage": ["big_idea", "challenge"],
+    "EssentialQuestioning": ["questions", "selected_question"],
     "Investigate": ["guiding_question", "activities_resources", "synthesis"],
     "Act": ["solution", "implementation", "evaluation"],
 }
 
 PHASE_POSITION = {
     "Engage": 1,
-    "Investigate": 2,
-    "Act": 3,
+    "EssentialQuestioning": 2, 
+    "Investigate": 3,
+    "Act": 4,
 }
 
 DEFAULT_DYNAMIC_DATA = {
     "Engage": {
         "big_idea": [{"content": ""}],
-        "essential_question": [{"content": ""}],
         "challenge": [{"content": ""}],
+    },
+    "EssentialQuestioning": {
+        "questions": [""],
+        "selected_question": "",
     },
     "Investigate": {
         "guiding_questions": [{"content": ""}],

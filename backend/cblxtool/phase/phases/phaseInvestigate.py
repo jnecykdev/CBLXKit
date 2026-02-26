@@ -33,7 +33,7 @@ class PhaseInvestigate(AbstractPhase):
     #     """ Calls the generic POST method from AbstractPhase """
     #     return AbstractPhase.post_phase_data(phase, data)
     NAME = 'Investigate'
-    POSITION = 2
+    POSITION = 3
 
 
     @staticmethod

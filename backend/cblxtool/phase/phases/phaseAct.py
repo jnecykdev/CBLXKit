@@ -34,7 +34,7 @@ class PhaseAct(AbstractPhase):
     #     return AbstractPhase.post_phase_data(phase, data)
 
     NAME = 'Act'
-    POSITION = 3
+    POSITION = 4
 
 
     @staticmethod
