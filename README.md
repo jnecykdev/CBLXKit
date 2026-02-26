@@ -126,7 +126,7 @@ If authentication is enabled, validate the expected response codes (401 Unauthor
 The experiment is executed by implementing and validating the following backend-only tasks in this order:
 
  - Add description field to the Project model.
- - Create and register an additional Strategy instance to sort projects alphabetically.
+ - Edit the by_name.py file Strategy to sort projects alphabetically by name.
  - Introduce a new phase for Essential Questioning.
  - Export project pages and related content through structured JSON endpoints.
 
