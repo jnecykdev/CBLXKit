@@ -135,5 +135,4 @@ Each task must include:
  - Code implementation 
  - Database migration if required
  - Endpoint contract updates (serializers and views)
-
-Validation using Swagger UI
+ - Validation using Swagger UI
