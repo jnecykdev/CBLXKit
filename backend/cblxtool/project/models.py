@@ -16,6 +16,7 @@ class Project(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='projects', null=True, blank=True,) # Dono do projeto
     created_at = models.DateTimeField(auto_now_add=True)  # Data de criação do projeto
     image = models.ImageField(upload_to=user_directory_path, blank=True, null=True)  # Imagem do projeto
+    description = models.TextField(blank=True, null=True)  # Descrição do projeto
 
     collaborators = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
