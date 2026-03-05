@@ -14,8 +14,8 @@ This repository contains the backend-only reference implementation used to run t
 ## 1. Clone the repository
 
 ```bash
-git clone https://github.com/jnecykdev/CBLXKit-Framework.git
-cd CBLXKit-Framework
+git clone https://github.com/jnecykdev/CBLXKit.git
+cd CBLXKit
 ```
 ## 2. Create and activate a virtual environment
 
